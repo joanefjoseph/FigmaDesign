@@ -238,7 +238,7 @@ export default function HowItWorks() {
               {
                 icon: "🔔",
                 title: "Vendor API Change Monitoring",
-                desc: "We track Ticketmaster and AXS changelogs so you never wake up to a broken integration.",
+                desc: "We track ticket vendor changelogs so you never wake up to a broken integration.",
               },
               {
                 icon: "📊",
