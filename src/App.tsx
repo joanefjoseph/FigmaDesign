@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import logoGradient from "@/imports/logo_gradient.png";
 import watermarkNoBg from "@/imports/watermark_no_background.png";
+import type { Page } from "./navigation";
 
 import Home from "@/pages/Home";
 import HowItWorks from "@/pages/HowItWorks";
@@ -13,20 +14,6 @@ import ProductRoadmap from "@/pages/resources/ProductRoadmap";
 import Careers from "@/pages/resources/Careers";
 import Newsroom from "@/pages/resources/Newsroom";
 import BecomePartner from "@/pages/resources/BecomePartner";
-
-type Page =
-  | "home"
-  | "how-it-works"
-  | "pricing"
-  | "about"
-  | "demo"
-  | "get-support"
-  | "professional-services"
-  | "product-roadmap"
-  | "careers"
-  | "newsroom"
-  | "contact-sales"
-  | "become-partner";
 
 const resourcesSections = [
   {

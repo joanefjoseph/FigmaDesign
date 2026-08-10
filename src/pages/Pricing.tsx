@@ -1,4 +1,5 @@
 import { useState } from "react";
+import type { Page } from "../navigation";
 
 const plans = [
   {
@@ -52,7 +53,7 @@ const plans = [
   },
 ];
 
-export default function Pricing({ onNavigate }: { onNavigate: (page: string, sub?: string) => void }) {
+export default function Pricing({ onNavigate }: { onNavigate: (page: Page, sub?: string) => void }) {
   const [annual, setAnnual] = useState(true);
 
   return (
@@ -187,7 +188,7 @@ export default function Pricing({ onNavigate }: { onNavigate: (page: string, sub
                 }}
                 onClick={() =>
                   plan.name === "Enterprise"
-                    ? onNavigate("resources", "contact-sales")
+                    ? onNavigate("contact-sales")
                     : onNavigate("demo")
                 }
               >

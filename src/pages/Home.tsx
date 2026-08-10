@@ -1,4 +1,5 @@
 import watermark from "@/imports/watermark_no_background.png";
+import type { Page } from "../navigation";
 
 const customers = [
   { name: "Independent Artists", icon: "🎤", desc: "Sell tickets directly through your own site without handing fans off to a third-party checkout." },
@@ -7,7 +8,7 @@ const customers = [
   { name: "Fan Club Platforms", icon: "⭐", desc: "Gate pre-sales and member pricing behind fandom verification — built into the purchase flow, not bolted on." },
 ];
 
-export default function Home({ onNavigate }: { onNavigate: (page: string) => void }) {
+export default function Home({ onNavigate }: { onNavigate: (page: Page) => void }) {
   return (
     <div className="min-h-screen bg-[#0a0a0a]">
 
