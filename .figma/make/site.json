@@ -1,0 +1,10 @@
+{
+  "description": "Connect event organizers directly to ticket vendors for seamless ticket sales and fandom verification, enhancing fan engagement and sales efficiency.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
