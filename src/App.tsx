@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import logoGradient from "@/imports/logo_gradient.png";
 import watermarkNoBg from "@/imports/watermark_no_background.png";
 import type { Page } from "./navigation";
+import { createWeb3FormsConfig, WEB3_FORM_SUBJECTS } from "@/config/web3forms";
 
 import Home from "@/pages/Home";
 import HowItWorks from "@/pages/HowItWorks";
@@ -12,7 +13,7 @@ import ContactForm from "@/components/ContactForm";
 import ProfessionalServices from "@/pages/resources/ProfessionalServices";
 import ProductRoadmap from "@/pages/resources/ProductRoadmap";
 import Careers from "@/pages/resources/Careers";
-import Newsroom from "@/pages/resources/Newsroom";
+// import Newsroom from "@/pages/resources/Newsroom";
 import BecomePartner from "@/pages/resources/BecomePartner";
 
 const resourcesSections = [
@@ -30,7 +31,7 @@ const resourcesSections = [
     links: [
       { label: "Product Roadmap", page: "product-roadmap" as Page, desc: "What's coming" },
       { label: "Careers", page: "careers" as Page, desc: "Join the team" },
-      { label: "Newsroom", page: "newsroom" as Page, desc: "Press & coverage" },
+      // { label: "Newsroom", page: "newsroom" as Page, desc: "Press & coverage" },
     ],
   },
   {
@@ -69,7 +70,7 @@ function Nav({
     "professional-services",
     "product-roadmap",
     "careers",
-    "newsroom",
+    // "newsroom",
     "contact-sales",
     "become-partner",
   ].includes(current);
@@ -320,7 +321,7 @@ function Footer({ onNavigate }: { onNavigate: (p: Page) => void }) {
               {[
                 { l: "About", p: "about" as Page },
                 { l: "Careers", p: "careers" as Page },
-                { l: "Newsroom", p: "newsroom" as Page },
+                // { l: "Newsroom", p: "newsroom" as Page },
                 { l: "Become A Partner", p: "become-partner" as Page },
               ].map(({ l, p }) => (
                 <button
@@ -335,7 +336,7 @@ function Footer({ onNavigate }: { onNavigate: (p: Page) => void }) {
           </div>
         </div>
         <div className="border-t border-[#1a1a1a] pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-[#444] text-xs">© 2026 Show Stop, Inc. All rights reserved.</p>
+          <p className="text-[#444] text-xs">© 2026 Show Stop Tickets, LLC. All rights reserved.</p>
           <p className="text-[#444] text-xs">Real tickets, for real fans.</p>
         </div>
       </div>
@@ -378,6 +379,10 @@ export default function App() {
                 subtitle="See Show Stop in action. We'll set up a live walkthrough of the integration and discuss your specific ticketing setup."
                 fields={["name", "email", "company", "role", "message"]}
                 submitLabel="Request Demo"
+                web3Forms={createWeb3FormsConfig(
+                  import.meta.env.VITE_WEB3FORMS_DEMO_ACCESS_KEY,
+                  WEB3_FORM_SUBJECTS.demo,
+                )}
               />
             </div>
           </div>
@@ -399,6 +404,10 @@ export default function App() {
                 subtitle="Have a technical issue or integration question? Reach our engineering team directly."
                 fields={["name", "email", "company", "message"]}
                 submitLabel="Submit Support Request"
+                web3Forms={createWeb3FormsConfig(
+                  import.meta.env.VITE_WEB3FORMS_SUPPORT_ACCESS_KEY,
+                  WEB3_FORM_SUBJECTS.support,
+                )}
               />
             </div>
           </div>
@@ -420,6 +429,10 @@ export default function App() {
                 subtitle="Tell us about your event setup. We'll match you to the right plan and walk you through everything."
                 fields={["name", "email", "company", "role", "phone", "message"]}
                 submitLabel="Talk to Sales"
+                web3Forms={createWeb3FormsConfig(
+                  import.meta.env.VITE_WEB3FORMS_SALES_ACCESS_KEY,
+                  WEB3_FORM_SUBJECTS.sales,
+                )}
               />
             </div>
           </div>
@@ -430,8 +443,8 @@ export default function App() {
         return <ProductRoadmap />;
       case "careers":
         return <Careers />;
-      case "newsroom":
-        return <Newsroom />;
+      // case "newsroom":
+        // return <Newsroom />;
       case "become-partner":
         return <BecomePartner />;
       default:

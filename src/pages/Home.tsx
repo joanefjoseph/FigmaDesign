@@ -1,4 +1,5 @@
 import watermark from "@/imports/watermark_no_background.png";
+import joaneHeadshot from "@/imports/joane_headshot.jpg";
 import type { Page } from "../navigation";
 
 const customers = [
@@ -66,28 +67,6 @@ export default function Home({ onNavigate }: { onNavigate: (page: Page) => void 
               See How It Works
             </button>
           </div>
-        </div>
-      </section>
-
-      {/* Divider with stat strip */}
-      <section className="border-y border-[#1a1a1a]">
-        <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 divide-x divide-[#1a1a1a]">
-          {[
-            { value: "1.2M+", label: "Tickets Processed" },
-            { value: "40+", label: "Events Powered" },
-            { value: "98.7%", label: "Checkout Completion" },
-            { value: "2", label: "Vendor Integrations" },
-          ].map(({ value, label }) => (
-            <div key={label} className="px-8 py-8 text-center">
-              <p
-                className="font-bold text-4xl gradient-text mb-1"
-                style={{ fontFamily: "var(--font-display)" }}
-              >
-                {value}
-              </p>
-              <p className="text-[#555] text-xs uppercase tracking-widest">{label}</p>
-            </div>
-          ))}
         </div>
       </section>
 
@@ -212,12 +191,11 @@ export default function Home({ onNavigate }: { onNavigate: (page: Page) => void 
               className="font-bold text-5xl text-white uppercase leading-none mb-6"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              Industry insiders who got tired of the workarounds
+              A founder who got tired of the workarounds
             </h2>
             <p className="text-[#888] text-base leading-relaxed mb-4">
-              Show Stop was founded by Maya Osei (ex–Atlantic Records), Dario Vasquez
-              (ex–Ticketmaster Partner Platform), and Priya Menon (ex–Live Nation). We
-              spent decades on both sides of the problem before deciding to fix it.
+              Show Stop was founded by Joane Joseph (ex-BuzzFeed), who built the company
+              to bring a more seamless, data-driven experience to concert ticketing.
             </p>
             <p className="text-[#888] text-base leading-relaxed mb-8">
               We&apos;re based in New York, remote-first, and obsessed with the 30-second
@@ -228,34 +206,26 @@ export default function Home({ onNavigate }: { onNavigate: (page: Page) => void 
               className="text-sm font-bold uppercase tracking-widest text-[#0d946d] hover:text-white transition-colors flex items-center gap-2"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              Meet the founders <span>→</span>
+              Meet the founder <span>→</span>
             </button>
           </div>
 
-          <div className="grid grid-cols-3 gap-3">
-            {[
-              { name: "Maya Osei", role: "CEO", former: "ex-Atlantic Records", img: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=300&h=300&fit=crop&auto=format" },
-              { name: "Dario Vasquez", role: "CTO", former: "ex-Ticketmaster", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&auto=format" },
-              { name: "Priya Menon", role: "COO", former: "ex-Live Nation", img: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=300&h=300&fit=crop&auto=format" },
-            ].map(({ name, role, former, img }) => (
-              <div key={name} className="group">
-                <div className="aspect-square overflow-hidden rounded-sm bg-[#1a1a1a] mb-2">
-                  <img
-                    src={img}
-                    alt={name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 grayscale group-hover:grayscale-0"
-                  />
-                </div>
-                <p
-                  className="text-white text-xs font-bold uppercase"
-                  style={{ fontFamily: "var(--font-display)" }}
-                >
-                  {name}
-                </p>
-                <p className="text-[#d9529e] text-[10px] uppercase tracking-widest">{role}</p>
-                <p className="text-[#444] text-[10px]">{former}</p>
-              </div>
-            ))}
+          <div className="w-[10.752rem] max-w-full md:ml-auto group">
+            <div className="aspect-square overflow-hidden rounded-sm bg-[#1a1a1a] mb-3">
+              <img
+                src={joaneHeadshot}
+                alt="Joane Joseph"
+                className="w-full h-full object-cover object-center grayscale group-hover:grayscale-0 group-hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+            <p
+              className="text-white text-sm font-bold uppercase"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              Joane Joseph
+            </p>
+            <p className="text-[#d9529e] text-[10px] uppercase tracking-widest">Founder & CEO</p>
+            <p className="text-[#444] text-[10px]">ex-BuzzFeed</p>
           </div>
         </div>
       </section>

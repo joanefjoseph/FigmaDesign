@@ -1,10 +1,18 @@
 import { useState } from "react";
 
+interface Web3FormsConfig {
+  accessKey: string;
+  toEmail?: string;
+  subject?: string;
+  fromName?: string;
+}
+
 interface ContactFormProps {
   title: string;
   subtitle?: string;
   fields?: Array<"name" | "email" | "company" | "role" | "message" | "phone">;
   submitLabel?: string;
+  web3Forms?: Web3FormsConfig;
 }
 
 export default function ContactForm({
@@ -12,13 +20,69 @@ export default function ContactForm({
   subtitle,
   fields = ["name", "email", "company", "message"],
   submitLabel = "Send Message",
+  web3Forms,
 }: ContactFormProps) {
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState<Record<string, string>>({});
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setError(null);
+
+    if (!web3Forms) {
+      setSubmitted(true);
+      return;
+    }
+
+    setSending(true);
+
+    const payload: Record<string, string> = {
+      access_key: web3Forms.accessKey,
+      subject: web3Forms.subject || title,
+      from_name: web3Forms.fromName || "Show Stop Website",
+    };
+
+    if (web3Forms.toEmail) {
+      payload.to = web3Forms.toEmail;
+    }
+
+    fields.forEach((field) => {
+      payload[field] = form[field] || "";
+    });
+
+    // Use a common alias for the sender email field when available.
+    if (form.email) {
+      payload.replyto = form.email;
+    }
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.message || "Unable to send message right now.");
+      }
+
+      setSubmitted(true);
+      setForm({});
+    } catch (submitError) {
+      const message = submitError instanceof Error
+        ? submitError.message
+        : "Unable to send message right now.";
+      setError(message);
+    } finally {
+      setSending(false);
+    }
   };
 
   const inputClass =
@@ -89,8 +153,14 @@ export default function ContactForm({
             </div>
           );
         })}
+        {error && (
+          <p className="text-[#d9529e] text-sm" role="alert">
+            {error}
+          </p>
+        )}
         <button
           type="submit"
+          disabled={sending}
           className="w-full py-4 font-bold text-sm uppercase tracking-widest text-white transition-opacity hover:opacity-90"
           style={{
             fontFamily: "var(--font-display)",
@@ -98,7 +168,7 @@ export default function ContactForm({
             background: "linear-gradient(90deg, #d9529e 0%, #0d946d 100%)",
           }}
         >
-          {submitLabel}
+          {sending ? "Sending..." : submitLabel}
         </button>
       </form>
     </div>

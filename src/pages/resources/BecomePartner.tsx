@@ -1,4 +1,70 @@
+import { useState } from "react";
+import { WEB3_FORMS_FROM_NAME, WEB3_FORMS_TO_EMAIL, WEB3_FORM_SUBJECTS } from "@/config/web3forms";
+
 export default function BecomePartner() {
+  const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    organization: "",
+    role: "",
+    partnershipInterest: "",
+  });
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError(null);
+    setSending(true);
+
+    const payload: Record<string, string> = {
+      access_key: import.meta.env.VITE_WEB3FORMS_PARTNER_ACCESS_KEY,
+      subject: WEB3_FORM_SUBJECTS.partner,
+      from_name: WEB3_FORMS_FROM_NAME,
+      to: WEB3_FORMS_TO_EMAIL,
+      name: form.name,
+      email: form.email,
+      organization: form.organization,
+      role: form.role,
+      partnership_interest: form.partnershipInterest,
+      replyto: form.email,
+    };
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.message || "Unable to send message right now.");
+      }
+
+      setSubmitted(true);
+      setForm({
+        name: "",
+        email: "",
+        organization: "",
+        role: "",
+        partnershipInterest: "",
+      });
+    } catch (submitError) {
+      const message = submitError instanceof Error
+        ? submitError.message
+        : "Unable to send message right now.";
+      setError(message);
+    } finally {
+      setSending(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#0a0a0a]">
       <section className="px-6 pt-20 pb-16 max-w-6xl mx-auto">
@@ -27,7 +93,7 @@ export default function BecomePartner() {
             {
               type: "Angel / Seed Investor",
               color: "#d9529e",
-              desc: "We&apos;re at an early stage and actively engaged in conversations with angels and seed funds who have thesis alignment with live entertainment, developer tools, or API infrastructure.",
+              desc: "We're at an early stage and actively engaged in conversations with angels and seed funds who have thesis alignment with live entertainment, developer tools, or API infrastructure.",
               bullets: [
                 "Access to full pitch deck and financials",
                 "Regular investor updates",
@@ -38,7 +104,7 @@ export default function BecomePartner() {
             {
               type: "Early Technology Partner",
               color: "#0d946d",
-              desc: "If you&apos;re an event organizer, fan platform, or venue operator who wants to pilot Show Stop before GA, we offer a structured beta program with white-glove support.",
+              desc: "If you're an event organizer, fan platform, or venue operator who wants to pilot Show Stop before GA, we offer a structured beta program with white-glove support.",
               bullets: [
                 "60-day free pilot",
                 "Direct engineering access",
@@ -81,23 +147,40 @@ export default function BecomePartner() {
           <p className="text-[#888] text-sm mb-8">
             Fill in a few details and the right person on our team will respond within 48 hours.
           </p>
+          {submitted ? (
+            <div className="text-center py-8">
+              <p
+                className="text-white font-bold text-2xl uppercase mb-2"
+                style={{ fontFamily: "var(--font-display)" }}
+              >
+                Introduction Sent
+              </p>
+              <p className="text-[#888] text-sm">
+                Thanks for reaching out. Our team will get back to you within 48 hours.
+              </p>
+            </div>
+          ) : (
           <form
             className="grid grid-cols-1 md:grid-cols-2 gap-5"
-            onSubmit={(e) => e.preventDefault()}
+            onSubmit={handleSubmit}
           >
             {[
-              { label: "Full Name", placeholder: "Jane Smith", type: "text" },
-              { label: "Email", placeholder: "jane@fund.com", type: "email" },
-              { label: "Organization", placeholder: "Acme Ventures", type: "text" },
-              { label: "Role", placeholder: "General Partner, CEO, etc.", type: "text" },
-            ].map(({ label, placeholder, type }) => (
+              { key: "name", label: "Full Name", placeholder: "Jane Smith", type: "text" },
+              { key: "email", label: "Email", placeholder: "jane@fund.com", type: "email" },
+              { key: "organization", label: "Organization", placeholder: "Acme Ventures", type: "text" },
+              { key: "role", label: "Role", placeholder: "General Partner, CEO, etc.", type: "text" },
+            ].map(({ key, label, placeholder, type }) => (
               <div key={label}>
                 <label className="block text-xs font-medium text-[#888] uppercase tracking-widest mb-2">
                   {label}
                 </label>
                 <input
+                  name={key}
                   type={type}
                   placeholder={placeholder}
+                  value={form[key as "name" | "email" | "organization" | "role"]}
+                  onChange={(e) => setForm({ ...form, [key]: e.target.value })}
+                  required
                   className="w-full bg-[#1a1a1a] border border-[#2a2a2a] text-white placeholder-[#555] rounded-sm px-4 py-3 text-sm focus:outline-none focus:border-[#d9529e] transition-colors"
                 />
               </div>
@@ -109,22 +192,34 @@ export default function BecomePartner() {
               <textarea
                 rows={4}
                 placeholder="Tell us about your interest — investor, pilot partner, strategic alliance..."
+                value={form.partnershipInterest}
+                onChange={(e) => setForm({ ...form, partnershipInterest: e.target.value })}
+                required
                 className="w-full bg-[#1a1a1a] border border-[#2a2a2a] text-white placeholder-[#555] rounded-sm px-4 py-3 text-sm focus:outline-none focus:border-[#d9529e] transition-colors resize-none"
               />
             </div>
+            {error && (
+              <div className="md:col-span-2">
+                <p className="text-[#d9529e] text-sm" role="alert">
+                  {error}
+                </p>
+              </div>
+            )}
             <div className="md:col-span-2">
               <button
                 type="submit"
+                disabled={sending}
                 className="px-12 py-3 font-bold uppercase tracking-widest text-white text-sm"
                 style={{
                   fontFamily: "var(--font-display)",
                   background: "linear-gradient(90deg, #d9529e, #0d946d)",
                 }}
               >
-                Send Introduction
+                {sending ? "Sending..." : "Send Introduction"}
               </button>
             </div>
           </form>
+          )}
         </div>
       </section>
     </div>

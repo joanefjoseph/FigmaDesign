@@ -1,52 +1,50 @@
 const milestones = [
   {
-    quarter: "Q3 2025",
-    status: "shipped",
-    items: [
-      { title: "AXS Partner API v3 support", done: true },
-      { title: "Fandom tier-based pre-sale windows", done: true },
-      { title: "Webhook event stream (beta)", done: true },
-    ],
-  },
-  {
-    quarter: "Q4 2025",
-    status: "shipped",
-    items: [
-      { title: "JavaScript SDK v2.0", done: true },
-      { title: "Real-time inventory sync", done: true },
-      { title: "Staging environment overhaul", done: true },
-      { title: "Multi-currency support", done: true },
-    ],
-  },
-  {
-    quarter: "Q1 2026",
+    quarter: "Q3 2026",
     status: "in progress",
     items: [
-      { title: "Analytics dashboard (subscriber-facing)", done: true },
-      { title: "Python SDK GA", done: false },
+      { title: "Ticketmaster Partner API support", done: true },
+      { title: "Real-time inventory sync", done: true },
+      { title: "Fandom tier-based pre-sale windows", done: false },
+    ],
+  },
+  {
+    quarter: "Q4 2026",
+    status: "upcoming",
+    items: [
+      { title: "AXS Partner API v2 support", done: false },
+      { title: "Staging environment overhaul", done: false },
+      { title: "Analytics dashboard (subscriber-facing)", done: false },
+    ],
+  },
+  {
+    quarter: "Q1 2027",
+    status: "upcoming",
+    items: [
       { title: "Resale / transfer API integration", done: false },
-      { title: "Ticketmaster Presence SDK bridge", done: false },
-    ],
-  },
-  {
-    quarter: "Q2 2026",
-    status: "upcoming",
-    items: [
-      { title: "PHP SDK release", done: false },
-      { title: "Accessible checkout components library", done: false },
       { title: "Mobile-native SDK (iOS + Android)", done: false },
+      { title: "Timed ticketing API", done: false },
     ],
   },
   {
-    quarter: "Q3 2026",
+    quarter: "Q2 2027",
     status: "upcoming",
     items: [
-      { title: "DICE FM integration", done: false },
-      { title: "See Tickets integration", done: false },
-      { title: "White-label checkout flow builder", done: false },
+      { title: "Melon ticket integration", done: false },
       { title: "Fraud signal API", done: false },
     ],
   },
+  // {
+  //   quarter: "Q3 2027",
+  //   status: "upcoming",
+  //   items: [
+  //     { title: "JavaScript SDK v2.0", done: false },
+  //     { title: "Accessible checkout components library", done: false },
+  //     { title: "Python SDK GA", done: false },
+  //     { title: "Webhook event stream (beta)", done: false },
+  //     { title: "White-label checkout flow builder", done: false },
+  //   ],
+  // },
 ];
 
 const statusColors: Record<string, string> = {

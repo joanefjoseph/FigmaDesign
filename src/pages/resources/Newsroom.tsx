@@ -67,8 +67,8 @@ export default function Newsroom() {
         </h1>
         <p className="text-[#888] text-lg max-w-2xl">
           Press coverage and announcements. For media inquiries, contact{" "}
-          <a href="mailto:press@showstop.io" className="text-[#d9529e] hover:underline">
-            press@showstop.io
+          <a href="mailto:contact@showstop.io" className="text-[#d9529e] hover:underline">
+            contact@showstop.io
           </a>
         </p>
       </section>

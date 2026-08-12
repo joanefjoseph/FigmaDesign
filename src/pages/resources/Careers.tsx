@@ -1,46 +1,25 @@
 const openings = [
-  {
-    title: "Senior Backend Engineer",
-    team: "Platform",
-    location: "Remote (US)",
-    type: "Full-time",
-    desc: "Build and maintain the core API layer that connects event organizers to ticketing vendors. Strong experience with Node.js, REST API design, and high-throughput systems required.",
-  },
+  // {
+  //   title: "Senior Backend Engineer",
+  //   team: "Platform",
+  //   location: "Remote (US)",
+  //   type: "Full-time",
+  //   desc: "Build and maintain the core API layer that connects event organizers to ticketing vendors. Strong experience with Node.js, REST API design, and high-throughput systems required.",
+  // },
   {
     title: "Integration Engineer",
     team: "Customer Success",
-    location: "Remote (US/UK)",
+    location: "Remote (US)",
     type: "Full-time",
     desc: "Work directly in customer codebases to implement Show Stop integrations. You're part engineer, part consultant — comfortable reading unfamiliar stacks and shipping fast.",
   },
-  {
-    title: "Product Manager — Developer Experience",
-    team: "Product",
-    location: "Remote (US)",
-    type: "Full-time",
-    desc: "Own the SDK, docs, and developer onboarding experience. You have a deep empathy for developers as users and a track record of shipping DX improvements that actually get used.",
-  },
-  {
-    title: "Account Executive",
-    team: "Sales",
-    location: "New York, NY or Remote",
-    type: "Full-time",
-    desc: "Close deals with mid-market and enterprise event organizers. You know the music industry and can hold a credible technical conversation with both a CTO and a tour manager.",
-  },
-  {
-    title: "Marketing Manager",
-    team: "Marketing",
-    location: "Remote (US)",
-    type: "Full-time",
-    desc: "Own content, campaigns, and brand — from press releases to product launches. Industry fluency in live events is a strong plus.",
-  },
-  {
-    title: "QA Engineer",
-    team: "Platform",
-    location: "Remote",
-    type: "Contract",
-    desc: "Build out our test suite for API integration flows and vendor compatibility. Experience testing third-party API integrations is essential.",
-  },
+  // {
+  //   title: "Account Executive",
+  //   team: "Sales",
+  //   location: "New York, NY or Remote",
+  //   type: "Full-time",
+  //   desc: "Close deals with mid-market and enterprise event organizers. You know the music industry and can hold a credible technical conversation with both a CTO and a tour manager.",
+  // },
 ];
 
 export default function Careers() {

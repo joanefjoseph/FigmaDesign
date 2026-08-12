@@ -1,22 +1,12 @@
+import joaneHeadshot from "@/imports/joane_headshot.jpg";
+
 export default function About() {
   const founders = [
     {
-      name: "Maya Osei",
-      role: "Co-Founder & CEO",
-      bio: "Maya spent a decade as Head of Digital at Atlantic Records before realizing that every major artist she worked with was bleeding fans at the checkout redirect. She left to fix it. Before Atlantic, she ran growth at a Series B fintech and holds an MBA from Wharton.",
-      img: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=400&h=400&fit=crop&auto=format",
-    },
-    {
-      name: "Dario Vasquez",
-      role: "Co-Founder & CTO",
-      bio: "Dario was a principal engineer at Ticketmaster's partner platform team for six years. He built the very APIs Show Stop connects to — and grew frustrated watching organizers struggle with documentation that hadn't been updated since 2018. He left to make the experience what it should have been.",
-      img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&auto=format",
-    },
-    {
-      name: "Priya Menon",
-      role: "Co-Founder & COO",
-      bio: "Priya has spent 12 years in live event operations, including VP roles at Live Nation and Goldenvoice. She understands exactly what event organizers need operationally and ensures Show Stop's product decisions are grounded in how tours actually run — not how engineers imagine they do.",
-      img: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&h=400&fit=crop&auto=format",
+      name: "Joane Joseph",
+      role: "Founder & CEO",
+      bio: "Joane holds a Ph.D. in Operations Research from Princeton and spent 7+ years at BuzzFeed building ML systems that connected millions of users to content at scale. She founded Show Stop to bring that same data-driven precision to concert ticketing.",
+      img: joaneHeadshot,
     },
   ];
 
@@ -63,30 +53,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* Stats */}
-      <section className="px-6 pb-20 max-w-6xl mx-auto">
-        <div
-          className="grid grid-cols-2 md:grid-cols-4 gap-px bg-[#2a2a2a] border border-[#2a2a2a] rounded-sm overflow-hidden"
-        >
-          {[
-            { value: "2022", label: "Founded" },
-            { value: "40+", label: "Events Powered" },
-            { value: "1.2M", label: "Tickets Processed" },
-            { value: "98.7%", label: "Checkout Completion" },
-          ].map(({ value, label }) => (
-            <div key={label} className="bg-[#111] px-8 py-10 text-center">
-              <p
-                className="font-bold text-5xl gradient-text mb-2"
-                style={{ fontFamily: "var(--font-display)" }}
-              >
-                {value}
-              </p>
-              <p className="text-[#555] text-xs uppercase tracking-widest">{label}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* Founders */}
       <section className="px-6 pb-24 max-w-6xl mx-auto">
         <h2
@@ -95,25 +61,30 @@ export default function About() {
         >
           The Founders
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="max-w-4xl mx-auto">
           {founders.map((f) => (
-            <div key={f.name} className="border border-[#2a2a2a] bg-[#111] rounded-sm overflow-hidden group">
-              <div className="h-56 overflow-hidden bg-[#1a1a1a]">
-                <img
-                  src={f.img}
-                  alt={f.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-              <div className="p-6">
-                <p
-                  className="text-white font-bold text-2xl uppercase mb-0.5"
-                  style={{ fontFamily: "var(--font-display)" }}
-                >
-                  {f.name}
-                </p>
-                <p className="text-[#d9529e] text-xs uppercase tracking-widest mb-4">{f.role}</p>
-                <p className="text-[#888] text-sm leading-relaxed">{f.bio}</p>
+            <div
+              key={f.name}
+              className="border border-[#2a2a2a] bg-[#111] rounded-sm p-6 md:p-8 grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-8 items-start group"
+            >
+              <p className="text-[#888] text-sm leading-relaxed md:text-base md:pr-4">{f.bio}</p>
+              <div className="flex items-center md:justify-end gap-5">
+                <div className="w-32 h-32 md:w-40 md:h-40 overflow-hidden bg-[#1a1a1a] shrink-0">
+                  <img
+                    src={f.img}
+                    alt={f.name}
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div>
+                  <p
+                    className="text-white font-bold text-2xl uppercase mb-0.5"
+                    style={{ fontFamily: "var(--font-display)" }}
+                  >
+                    {f.name}
+                  </p>
+                  <p className="text-[#d9529e] text-xs uppercase tracking-widest">{f.role}</p>
+                </div>
               </div>
             </div>
           ))}
