@@ -5,9 +5,7 @@ export type Page =
   | "about"
   | "demo"
   | "get-support"
-  | "professional-services"
   | "product-roadmap"
-  | "careers"
   | "newsroom"
   | "contact-sales"
   | "become-partner";

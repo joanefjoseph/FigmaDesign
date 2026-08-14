@@ -1,60 +1,22 @@
-import { useState } from "react";
 import type { Page } from "../navigation";
 
-const plans = [
-  {
-    name: "Starter",
-    price: { monthly: 299, annual: 249 },
-    tag: "For independent artists & small venues",
-    features: [
-      "1 Ticketing vendor integration",
-      "Up to 10,000 tickets/month",
-      "Fandom ID verification",
-      "Standard SDK access",
-      "Email support (48hr response)",
-      "Sandbox environment",
-    ],
-    cta: "Get Started",
-    highlight: false,
-  },
-  {
-    name: "Pro",
-    price: { monthly: 899, annual: 749 },
-    tag: "For mid-size labels & multi-venue operators",
-    features: [
-      "2 Ticketing vendor integrations",
-      "Up to 100,000 tickets/month",
-      "Fandom ID verification + tiering",
-      "Full SDK + webhooks",
-      "Dedicated integration engineer",
-      "Slack support channel",
-      "Staging + production environments",
-      "Real-time inventory sync",
-    ],
-    cta: "Start Free Trial",
-    highlight: true,
-  },
-  {
-    name: "Enterprise",
-    price: { monthly: null, annual: null },
-    tag: "For major labels, arena tours & platforms",
-    features: [
-      "Unlimited vendor integrations",
-      "Unlimited ticket volume",
-      "Custom fandom verification flows",
-      "White-label API",
-      "On-site integration support",
-      "99.99% SLA",
-      "Custom analytics pipeline",
-      "Dedicated account team",
-    ],
-    cta: "Contact Sales",
-    highlight: false,
-  },
-];
+const enterprisePlan = {
+  name: "Enterprise",
+  tag: "For major labels, arena tours & platforms",
+  features: [
+    "2+ vendor integrations",
+    "Unlimited ticket volume",
+    "Custom fandom verification flows",
+    "White-label API",
+    "On-site integration support",
+    "99.99% SLA",
+    "Custom analytics pipeline",
+    "Dedicated account team",
+  ],
+  cta: "Contact Sales",
+};
 
 export default function Pricing({ onNavigate }: { onNavigate: (page: Page, sub?: string) => void }) {
-  const [annual, setAnnual] = useState(true);
 
   return (
     <div className="min-h-screen bg-[#0a0a0a]">
@@ -76,126 +38,74 @@ export default function Pricing({ onNavigate }: { onNavigate: (page: Page, sub?:
           on your volume.
         </p>
 
-        {/* Toggle */}
-        <div className="inline-flex items-center gap-3 border border-[#2a2a2a] p-1 rounded-sm">
-          <button
-            className={`px-5 py-2 text-sm font-medium uppercase tracking-widest transition-colors ${
-              !annual ? "bg-[#d9529e] text-white" : "text-[#888] hover:text-white"
-            }`}
-            style={{ fontFamily: "var(--font-display)" }}
-            onClick={() => setAnnual(false)}
-          >
-            Monthly
-          </button>
-          <button
-            className={`px-5 py-2 text-sm font-medium uppercase tracking-widest transition-colors ${
-              annual ? "bg-[#0d946d] text-white" : "text-[#888] hover:text-white"
-            }`}
-            style={{ fontFamily: "var(--font-display)" }}
-            onClick={() => setAnnual(true)}
-          >
-            Annual <span className="text-xs opacity-70">— save ~17%</span>
-          </button>
-        </div>
       </section>
 
-      <section className="px-6 pb-24 max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {plans.map((plan) => (
-            <div
-              key={plan.name}
-              className="flex flex-col border rounded-sm p-8 relative overflow-hidden transition-transform hover:-translate-y-1"
-              style={{
-                borderColor: plan.highlight ? "#d9529e60" : "#2a2a2a",
-                background: plan.highlight
-                  ? "linear-gradient(160deg, #d9529e10 0%, #0d946d08 100%)"
-                  : "#111111",
-              }}
+      <section className="px-6 pb-24 max-w-4xl mx-auto">
+        <div
+          className="flex flex-col border rounded-sm p-8 md:p-10 relative overflow-hidden"
+          style={{
+            borderColor: "#d9529e60",
+            background: "linear-gradient(160deg, #d9529e10 0%, #0d946d08 100%)",
+          }}
+        >
+          <div
+            className="absolute top-0 left-0 right-0 h-0.5"
+            style={{
+              background: "linear-gradient(90deg, #d9529e, #0d946d)",
+            }}
+          />
+          <div
+            className="absolute top-4 right-4 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-sm"
+            style={{
+              fontFamily: "var(--font-display)",
+              background: "linear-gradient(90deg, #d9529e, #0d946d)",
+              color: "white",
+            }}
+          >
+            Enterprise
+          </div>
+
+          <p
+            className="text-white font-bold text-3xl uppercase mb-1"
+            style={{ fontFamily: "var(--font-display)" }}
+          >
+            {enterprisePlan.name}
+          </p>
+          <p className="text-[#555] text-xs mb-6">{enterprisePlan.tag}</p>
+
+          <div className="mb-8">
+            <p
+              className="font-bold text-4xl md:text-5xl gradient-text"
+              style={{ fontFamily: "var(--font-display)" }}
             >
-              {plan.highlight && (
-                <div
-                  className="absolute top-0 left-0 right-0 h-0.5"
-                  style={{
-                    background: "linear-gradient(90deg, #d9529e, #0d946d)",
-                  }}
-                />
-              )}
-              {plan.highlight && (
-                <div
-                  className="absolute top-4 right-4 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-sm"
-                  style={{
-                    fontFamily: "var(--font-display)",
-                    background: "linear-gradient(90deg, #d9529e, #0d946d)",
-                    color: "white",
-                  }}
-                >
-                  Most Popular
-                </div>
-              )}
+              Custom pricing
+            </p>
+            <p className="text-[#888] text-sm mt-2 max-w-lg">
+              A tailored commercial model built around your ticket volume, integration scope, and rollout needs.
+            </p>
+          </div>
 
-              <p
-                className="text-white font-bold text-3xl uppercase mb-1"
-                style={{ fontFamily: "var(--font-display)" }}
-              >
-                {plan.name}
-              </p>
-              <p className="text-[#555] text-xs mb-6">{plan.tag}</p>
+          <ul className="space-y-3 mb-8 flex-1">
+            {enterprisePlan.features.map((feature) => (
+              <li key={feature} className="flex items-start gap-2">
+                <span className="text-[#0d946d] text-xs mt-1">✓</span>
+                <span className="text-[#ccc] text-sm">{feature}</span>
+              </li>
+            ))}
+          </ul>
 
-              <div className="mb-8">
-                {plan.price.monthly ? (
-                  <div className="flex items-end gap-1">
-                    <span
-                      className="font-bold text-5xl text-white"
-                      style={{ fontFamily: "var(--font-display)" }}
-                    >
-                      ${annual ? plan.price.annual : plan.price.monthly}
-                    </span>
-                    <span className="text-[#555] text-sm mb-2">/mo</span>
-                  </div>
-                ) : (
-                  <p
-                    className="font-bold text-4xl gradient-text"
-                    style={{ fontFamily: "var(--font-display)" }}
-                  >
-                    Custom
-                  </p>
-                )}
-                {plan.price.monthly && annual && (
-                  <p className="text-[#0d946d] text-xs mt-1">
-                    Billed annually · saves ${(plan.price.monthly - plan.price.annual!) * 12}/yr
-                  </p>
-                )}
-              </div>
-
-              <ul className="space-y-3 mb-8 flex-1">
-                {plan.features.map((f) => (
-                  <li key={f} className="flex items-start gap-2">
-                    <span className="text-[#0d946d] text-xs mt-1">✓</span>
-                    <span className="text-[#ccc] text-sm">{f}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <button
-                className="w-full py-3 font-bold text-sm uppercase tracking-widest transition-opacity hover:opacity-90"
-                style={{
-                  fontFamily: "var(--font-display)",
-                  background: plan.highlight
-                    ? "linear-gradient(90deg, #d9529e, #0d946d)"
-                    : "transparent",
-                  border: plan.highlight ? "none" : "1px solid #2a2a2a",
-                  color: plan.highlight ? "white" : "#888",
-                }}
-                onClick={() =>
-                  plan.name === "Enterprise"
-                    ? onNavigate("contact-sales")
-                    : onNavigate("demo")
-                }
-              >
-                {plan.cta}
-              </button>
-            </div>
-          ))}
+          <button
+            className="w-full md:w-auto px-6 py-3 font-bold text-sm uppercase tracking-widest transition-opacity hover:opacity-90"
+            style={{
+              fontFamily: "var(--font-display)",
+              background: "linear-gradient(90deg, #d9529e, #0d946d)",
+              border: "none",
+              color: "white",
+            }}
+            onClick={() => onNavigate("contact-sales")}
+          >
+            {enterprisePlan.cta}
+          </button>
         </div>
 
         {/* FAQ strip */}

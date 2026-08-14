@@ -10,37 +10,38 @@ import Pricing from "@/pages/Pricing";
 import About from "@/pages/About";
 import ContactForm from "@/components/ContactForm";
 
-import ProfessionalServices from "@/pages/resources/ProfessionalServices";
 import ProductRoadmap from "@/pages/resources/ProductRoadmap";
-import Careers from "@/pages/resources/Careers";
 // import Newsroom from "@/pages/resources/Newsroom";
 import BecomePartner from "@/pages/resources/BecomePartner";
 
-const resourcesSections = [
+const resourcesLinks = [
   {
-    label: "Support",
-    color: "#d9529e",
-    links: [
-      { label: "Get Support", page: "get-support" as Page, desc: "Contact our team" },
-      { label: "Professional Services", page: "professional-services" as Page, desc: "Managed integration work" },
-    ],
+    label: "Get Support",
+    page: "get-support" as Page,
+    accent: "#d9529e",
+    tag: "Support",
+    desc: "Contact our team",
   },
   {
-    label: "Company",
-    color: "#8b5aad",
-    links: [
-      { label: "Product Roadmap", page: "product-roadmap" as Page, desc: "What's coming" },
-      { label: "Careers", page: "careers" as Page, desc: "Join the team" },
-      // { label: "Newsroom", page: "newsroom" as Page, desc: "Press & coverage" },
-    ],
+    label: "Product Roadmap",
+    page: "product-roadmap" as Page,
+    accent: "#8b5aad",
+    tag: "Product",
+    desc: "What's coming",
   },
   {
-    label: "Contact",
-    color: "#0d946d",
-    links: [
-      { label: "Contact Sales", page: "contact-sales" as Page, desc: "Talk to our sales team" },
-      { label: "Become A Partner", page: "become-partner" as Page, desc: "Invest or pilot early" },
-    ],
+    label: "Contact Sales",
+    page: "contact-sales" as Page,
+    accent: "#0d946d",
+    tag: "Contact",
+    desc: "Talk to our sales team",
+  },
+  {
+    label: "Become A Partner",
+    page: "become-partner" as Page,
+    accent: "#8b5aad",
+    tag: "Partner",
+    desc: "Invest or pilot early",
   },
 ];
 
@@ -67,10 +68,7 @@ function Nav({
 
   const isResources = [
     "get-support",
-    "professional-services",
     "product-roadmap",
-    "careers",
-    // "newsroom",
     "contact-sales",
     "become-partner",
   ].includes(current);
@@ -116,40 +114,40 @@ function Nav({
             </button>
 
             {resourcesOpen && (
-              <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[520px] bg-[#111] border border-[#2a2a2a] rounded-sm shadow-2xl p-6">
-                <div className="grid grid-cols-3 gap-6">
-                  {resourcesSections.map((section) => (
-                    <div key={section.label}>
+              <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[640px] bg-[#111] border border-[#2a2a2a] rounded-sm shadow-2xl p-7">
+                <div className="grid grid-cols-2 gap-x-5 gap-y-3">
+                  {resourcesLinks.map((link) => (
+                    <button
+                      key={link.page}
+                      className="block text-left w-full group rounded-sm border border-transparent p-2.5 transition-all duration-200 hover:border-[#2a2a2a] hover:bg-[#171717]"
+                      onClick={() => {
+                        onNavigate(link.page);
+                        setResourcesOpen(false);
+                      }}
+                    >
                       <p
-                        className="text-xs font-bold uppercase tracking-widest mb-3"
+                        className="mb-1 text-[10px] font-bold uppercase tracking-[0.22em]"
                         style={{
                           fontFamily: "var(--font-display)",
-                          color: section.color,
+                          color: link.accent,
+                          filter: "saturate(1.35) brightness(1.15)",
+                          textShadow: "0 0 12px rgba(255,255,255,0.06)",
                         }}
                       >
-                        {section.label}
+                        {link.tag}
                       </p>
-                      <div className="space-y-2">
-                        {section.links.map((link) => (
-                          <button
-                            key={link.page}
-                            className="block text-left w-full group"
-                            onClick={() => {
-                              onNavigate(link.page);
-                              setResourcesOpen(false);
-                            }}
-                          >
-                            <p
-                              className="text-[#ccc] text-sm group-hover:text-white transition-colors font-medium"
-                              style={{ fontFamily: "var(--font-display)", textTransform: "uppercase", fontSize: "0.8rem", letterSpacing: "0.03em" }}
-                            >
-                              {link.label}
-                            </p>
-                            <p className="text-[#555] text-xs mt-0.5">{link.desc}</p>
-                          </button>
-                        ))}
-                      </div>
-                    </div>
+                      <p
+                        className="text-sm text-white group-hover:text-white transition-colors font-medium"
+                        style={{
+                          fontFamily: "var(--font-display)",
+                          textTransform: "uppercase",
+                          letterSpacing: "0.04em",
+                        }}
+                      >
+                        {link.label}
+                      </p>
+                      <p className="text-[#777] text-[11px] mt-1 leading-relaxed">{link.desc}</p>
+                    </button>
                   ))}
                 </div>
               </div>
@@ -220,7 +218,7 @@ function Nav({
           ))}
           <div className="border-t border-[#1a1a1a] pt-4 space-y-3">
             <p className="text-xs text-[#555] uppercase tracking-widest">Resources</p>
-            {resourcesSections.flatMap((s) => s.links).map((link) => (
+            {resourcesLinks.map((link) => (
               <button
                 key={link.page}
                 className="block text-left w-full text-[#888] text-sm uppercase tracking-widest"
@@ -297,7 +295,6 @@ function Footer({ onNavigate }: { onNavigate: (p: Page) => void }) {
             <div className="space-y-2">
               {[
                 { l: "Get Support", p: "get-support" as Page },
-                { l: "Professional Services", p: "professional-services" as Page },
                 { l: "Contact Sales", p: "contact-sales" as Page },
               ].map(({ l, p }) => (
                 <button
@@ -320,7 +317,6 @@ function Footer({ onNavigate }: { onNavigate: (p: Page) => void }) {
             <div className="space-y-2">
               {[
                 { l: "About", p: "about" as Page },
-                { l: "Careers", p: "careers" as Page },
                 // { l: "Newsroom", p: "newsroom" as Page },
                 { l: "Become A Partner", p: "become-partner" as Page },
               ].map(({ l, p }) => (
@@ -437,12 +433,8 @@ export default function App() {
             </div>
           </div>
         );
-      case "professional-services":
-        return <ProfessionalServices />;
       case "product-roadmap":
         return <ProductRoadmap />;
-      case "careers":
-        return <Careers />;
       // case "newsroom":
         // return <Newsroom />;
       case "become-partner":
