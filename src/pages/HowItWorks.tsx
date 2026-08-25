@@ -142,15 +142,9 @@ export default function HowItWorks() {
               </div>
               <div className="w-full border border-[#0d946d]/30 bg-[#0d946d]/5 rounded-sm p-4 text-center">
                 <p className="text-[#0d946d] text-xs font-medium uppercase tracking-widest mb-1">
-                  Ticketmaster
+                  Ticket Vendor
                 </p>
-                <p className="text-[#888] text-xs">Discovery + Commerce API</p>
-              </div>
-              <div className="w-full border border-[#0d946d]/30 bg-[#0d946d]/5 rounded-sm p-4 text-center">
-                <p className="text-[#0d946d] text-xs font-medium uppercase tracking-widest mb-1">
-                  AXS
-                </p>
-                <p className="text-[#888] text-xs">Smart Ticketing Platform</p>
+                <p className="text-[#888] text-xs">Partner API</p>
               </div>
             </div>
           </div>
@@ -171,7 +165,7 @@ export default function HowItWorks() {
               {
                 step: "03",
                 title: "Vendor fulfills the ticket",
-                desc: "Ticketmaster or AXS processes the payment and delivers the ticket — all within the organizer's branded flow.",
+                desc: "Primary ticketing provider processes the payment and delivers the ticket — all within the organizer's branded flow.",
               },
             ].map(({ step, title, desc }) => (
               <div key={step} className="flex gap-4">

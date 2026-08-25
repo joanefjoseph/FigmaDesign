@@ -43,8 +43,8 @@ export default function Home({ onNavigate }: { onNavigate: (page: Page) => void 
           </h1>
 
           <p className="text-[#999] text-lg md:text-xl max-w-xl leading-relaxed mb-10">
-            Show Stop connects event organizers directly to the Partner APIs of Ticketmaster
-            and AXS — so ticket sales live inside your platform, and your fans never leave
+            Show Stop connects event organizers directly to the Partner APIs of primary ticketing providers 
+            — so ticket sales live inside your platform, and your fans never leave
             your world to buy one.
           </p>
 
@@ -87,7 +87,7 @@ export default function Home({ onNavigate }: { onNavigate: (page: Page) => void 
               Your platform. Their infrastructure. Zero redirects.
             </h2>
             <p className="text-[#888] text-base leading-relaxed mb-4">
-              Ticketmaster and AXS are excellent at processing tickets at scale. But fans
+              Primary ticketing providers are excellent at processing tickets at scale. But fans
               know when they&apos;ve been handed off — and that seam costs conversions.
             </p>
             <p className="text-[#888] text-base leading-relaxed mb-8">
@@ -109,7 +109,7 @@ export default function Home({ onNavigate }: { onNavigate: (page: Page) => void 
             {[
               { label: "Your Platform", sub: "Fan-facing website or app", color: "#d9529e", icon: "🎤" },
               { label: "Show Stop API", sub: "Authentication · Routing · Verification", color: "#8b5aad", icon: "⚡", center: true },
-              { label: "Ticketing Vendor", sub: "Ticketmaster · AXS", color: "#0d946d", icon: "🎟" },
+              { label: "Ticketing Vendor", color: "#0d946d", icon: "🎟" },
             ].map(({ label, sub, color, icon, center }, i) => (
               <div key={label}>
                 <div

@@ -3,7 +3,7 @@ const milestones = [
     quarter: "Q3 2026",
     status: "in progress",
     items: [
-      { title: "Ticketmaster Partner API support", done: true },
+      { title: "Primary ticketing vendor Partner API support", done: true },
       { title: "Real-time inventory sync", done: true },
       { title: "Fandom tier-based pre-sale windows", done: false },
     ],
@@ -12,7 +12,7 @@ const milestones = [
     quarter: "Q4 2026",
     status: "upcoming",
     items: [
-      { title: "AXS Partner API v2 support", done: false },
+      { title: "Secondary ticketing vendor Partner API v2 support", done: false },
       { title: "Staging environment overhaul", done: false },
       { title: "Analytics dashboard (subscriber-facing)", done: false },
     ],

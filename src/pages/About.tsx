@@ -37,10 +37,10 @@ export default function About() {
               to an unfamiliar ticketing site.
             </p>
             <p className="text-[#888] text-base leading-relaxed">
-              The problem isn&apos;t the ticketing vendors. Ticketmaster and AXS are good at
-              processing tickets at scale. The problem is the seam — the jarring moment where a fan
-              leaves the artist&apos;s world and enters a generic checkout flow that could be for
-              any event, anywhere.
+              The problem isn&apos;t the ticketing vendors. The leading primary ticketing providers
+              are good at processing tickets at scale. The problem is the seam — the jarring moment
+              where a fan leaves the artist&apos;s world and enters a generic checkout flow that
+              could be for any event, anywhere.
             </p>
             <p className="text-[#888] text-base leading-relaxed">
               We built Show Stop to close that seam. Real tickets, processed by the vendor the

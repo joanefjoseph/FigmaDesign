@@ -12,7 +12,7 @@ const articles = [
     date: "February 3, 2026",
     title: "Ticketing infrastructure startup Show Stop emerges from stealth",
     excerpt:
-      "Founded by veterans of Atlantic Records and Ticketmaster's partner platform team, Show Stop wants to give artists full control over their ticket sales without leaving the table.",
+      "Founded by veterans of Atlantic Records and a primary ticketing vendor's partner platform team, Show Stop wants to give artists full control over their ticket sales without leaving the table.",
     url: "#",
   },
   {
@@ -44,7 +44,7 @@ const articles = [
     date: "October 8, 2025",
     title: "Can a startup actually fix the nightmare that is concert ticketing?",
     excerpt:
-      "Show Stop isn&apos;t trying to replace Ticketmaster. Instead it&apos;s betting that event organizers will pay for better plumbing.",
+      "Show Stop isn&apos;t trying to replace primary ticketing vendors.Instead it&apos;s betting that event organizers will pay for better plumbing.",
     url: "#",
   },
 ];
