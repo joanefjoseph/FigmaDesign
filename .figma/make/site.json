@@ -1,11 +1,11 @@
 {
-  "title": "Show Stop | Real Tickets for Real Fans",
-  "description": "Connect event organizers directly to ticket vendors for seamless ticket sales and fandom verification, enhancing fan engagement and sales efficiency.",
+  "title": "Show Stop",
+  "description": "Show Stop connects ticketing providers to artist, promoter, and fan platforms, so fans can buy event tickets without leaving your site.",
   "robots": {
     "index": true
   },
   "icons": {
-    "icon": "/src/imports/favicon.png"
+    "icon": "/src/imports/favicon-square.png"
   },
   "accessibility": {
     "addBypassLinks": false,

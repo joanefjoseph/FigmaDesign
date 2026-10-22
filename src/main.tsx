@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
 import './index.css'
-import favicon from '@/imports/favicon.png'
+import favicon from '@/imports/favicon-square.png'
 
 function setFavicon(url: string) {
   let link = document.querySelector<HTMLLinkElement>('link[rel="icon"]')
