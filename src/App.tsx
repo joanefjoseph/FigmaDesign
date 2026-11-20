@@ -5,6 +5,7 @@ import type { Page } from "./navigation";
 import { createWeb3FormsConfig, WEB3_FORM_SUBJECTS } from "@/config/web3forms";
 
 import Home from "@/pages/Home";
+import LiveDemo from "@/pages/LiveDemo";
 import HowItWorks from "@/pages/HowItWorks";
 import Pricing from "@/pages/Pricing";
 import About from "@/pages/About";
@@ -94,6 +95,14 @@ function Nav({
             onClick={() => onNavigate("how-it-works")}
           >
             How It Works
+          </button>
+
+          <button
+            className={navLinkClass(current === "live-demo")}
+            style={{ fontFamily: "var(--font-display)" }}
+            onClick={() => onNavigate("live-demo")}
+          >
+            Try It
           </button>
 
           {/* Resources dropdown */}
@@ -201,6 +210,7 @@ function Nav({
         <div className="md:hidden border-t border-[#1a1a1a] bg-[#0a0a0a] px-6 py-6 space-y-4">
           {[
             { label: "How It Works", page: "how-it-works" as Page },
+            { label: "Try It", page: "live-demo" as Page },
             { label: "Pricing", page: "pricing" as Page },
             { label: "About", page: "about" as Page },
           ].map(({ label, page }) => (
@@ -272,6 +282,7 @@ function Footer({ onNavigate }: { onNavigate: (p: Page) => void }) {
             <div className="space-y-2">
               {[
                 { l: "How It Works", p: "how-it-works" as Page },
+                { l: "Try It", p: "live-demo" as Page },
                 { l: "Pricing", p: "pricing" as Page },
                 { l: "Product Roadmap", p: "product-roadmap" as Page },
               ].map(({ l, p }) => (
@@ -352,6 +363,8 @@ export default function App() {
     switch (page) {
       case "home":
         return <Home onNavigate={navigate} />;
+      case "live-demo":
+        return <LiveDemo onNavigate={navigate} />;
       case "how-it-works":
         return <HowItWorks />;
       case "pricing":

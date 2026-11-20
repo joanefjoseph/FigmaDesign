@@ -1,6 +1,6 @@
 {
-  "title": "Show Stop",
-  "description": "Show Stop connects ticketing providers to artist, promoter, and fan platforms, so fans can buy event tickets without leaving your site.",
+  "title": "Show Stop | In-Platform Ticketing API for Artists, Labels & Promoters",
+  "description": "Show Stop connects your site or app to primary ticketing providers' Partner APIs, so fans buy tickets without leaving your platform. No redirects, live inventory, fan pre-sales.",
   "robots": {
     "index": true
   },

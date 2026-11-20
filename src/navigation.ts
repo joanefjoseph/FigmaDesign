@@ -4,6 +4,7 @@ export type Page =
   | "pricing"
   | "about"
   | "demo"
+  | "live-demo"
   | "get-support"
   | "product-roadmap"
   | "newsroom"
