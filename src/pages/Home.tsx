@@ -1,5 +1,6 @@
 import watermark from "@/imports/watermark_no_background.png";
 import joaneHeadshot from "@/imports/joane_headshot.jpg";
+import { MathStrip, CapabilitiesGrid, GetStartedSteps, Comparison, FAQ } from "@/components/HomeSections";
 import type { Page } from "../navigation";
 
 const customers = [
@@ -141,6 +142,39 @@ export default function Home({ onNavigate }: { onNavigate: (page: Page) => void 
         </div>
       </section>
 
+      <section className="px-6 pb-24 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center border border-[#2a2a2a] bg-[#111] rounded-sm p-8 md:p-12">
+          <div>
+            <p className="text-[#d9529e] text-sm font-medium uppercase tracking-widest mb-4" style={{ fontFamily: "var(--font-display)" }}>
+              Try It
+            </p>
+            <h2 className="font-bold text-5xl text-white uppercase leading-none mb-4" style={{ fontFamily: "var(--font-display)" }}>
+              Be the fan. <span className="gradient-text">Buy the ticket.</span>
+            </h2>
+            <p className="text-[#888] text-base leading-relaxed mb-8">
+              Watch a 60-second story, then tap through a real checkout flow powered by Show Stop. No sign-up needed.
+            </p>
+            <button
+              onClick={() => onNavigate("live-demo")}
+              className="px-8 py-3 font-bold text-sm uppercase tracking-widest text-white hover:opacity-90 transition-opacity"
+              style={{ fontFamily: "var(--font-display)", background: "linear-gradient(90deg, #d9529e 0%, #0d946d 100%)" }}
+            >
+              Launch the live demo
+            </button>
+          </div>
+          <div className="hidden md:flex justify-center">
+            <div className="w-48 aspect-[9/16] rounded-[1.5rem] border border-[#2a2a2a] bg-black flex flex-col items-center justify-center gap-3" style={{ boxShadow: "0 0 60px #d9529e22" }}>
+              <span className="text-4xl">🎟</span>
+              <span className="text-white font-bold uppercase text-sm" style={{ fontFamily: "var(--font-display)" }}>Play the story</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <CapabilitiesGrid />
+      <Comparison />
+      <MathStrip />
+
       {/* Who we serve */}
       <section className="px-6 pb-24 max-w-6xl mx-auto">
         <p
@@ -229,6 +263,9 @@ export default function Home({ onNavigate }: { onNavigate: (page: Page) => void 
           </div>
         </div>
       </section>
+
+      <GetStartedSteps onDemo={() => onNavigate("demo")} />
+      <FAQ />
 
       {/* CTA bar */}
       <section className="px-6 pb-24 max-w-6xl mx-auto">
